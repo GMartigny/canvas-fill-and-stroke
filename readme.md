@@ -1,6 +1,7 @@
 [CanvasRenderingContext2D] fill-and-stroke function
 =======
-**Status**: explainer
+**Status**: explainer  
+**Ticket**: [Open](https://github.com/whatwg/html/issues/5762)
 
 `CanvasRenderingContext2D` offer the possibility to `fill` or `stroke` a path.
 Problem is, these are two separate action taken by the renderer.
@@ -53,7 +54,7 @@ Demonstration
 | --- | --- | --- | --- |
 | Opacity |[![test opacity result](./media/alpha-result.png)](./examples/alpha.html) |[![test opacity result with stroke first](./media/alpha-result-stroke-first.png)](./examples/alpha-stroke-first.html) |[![test opacity result expected](./media/alpha-result-expected.png)](./examples/alpha-expected.html) |
 | Shadow |[![test shadow result](./media/shadow-result.png)](./examples/shadow.html) |[![test shadow result with stroke first](./media/shadow-result-stroke-first.png)](./examples/shadow-stroke-first.html) |[![test shadow result expected](./media/shadow-result-expected.png)](./examples/shadow-expected.html) |
-
+> Click on images to see the live version
 
 Alternatives considered
 -----------------------
