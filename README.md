@@ -1,1 +1,0 @@
-# canvas-fill-and-stroke

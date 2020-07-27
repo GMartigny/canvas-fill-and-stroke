@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Benchmark</title>
+    <style>
+        #title::after {
+            content: " (Done)";
+            font-size: 0.5em;
+            color: #666;
+        }
+        body.run #title::after {
+            content: " (Running)";
+        }
+    </style>
+</head>
+<body class="run">
+<script src="https://unpkg.com/lodash@4.17.19/lodash.js"></script>
+<script src="https://unpkg.com/benchmark@2.1.4/benchmark.js"></script>
+<script src="../src/polyfill.js"></script>
+<h1 id="title">Benchmark</h1>
+<ul id="list"></ul>
+<script>
+    window.addEventListener("load", () => {
+        const list = document.getElementById("list");
+
+        const canvas = document.createElement("canvas");
+        document.body.appendChild(canvas);
+        context = canvas.getContext("2d");
+
+        let path;
+
+        const setup = () => {
+            context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+
+            path = new Path2D();
+            path.rect(50, 25, 100, 100);
+
+            context.shadowColor = "green";
+            context.shadowBlur = 10;
+            context.shadowOffsetX = 30;
+            context.shadowOffsetY = 5;
+
+            context.fillStyle = "blue";
+            context.strokeStyle = "red";
+            context.lineWidth = 20;
+        }
+
+        const suite = new Benchmark.Suite({
+            onCycle: ({ target }) => {
+                const item = document.createElement("li");
+                item.textContent = target;
+                item.appendChild(context.canvas);
+                list.appendChild(item);
+
+                const canvas = document.createElement("canvas");
+                context = canvas.getContext("2d");
+            }
+        });
+        suite
+            .add("Native -", () => {
+                setup();
+                context.fill(path);
+                context.stroke(path);
+            })
+            .add("Polyfill -", () => {
+                setup();
+                context.fillAndStroke(path);
+            })
+            .run();
+
+        document.body.classList.remove("run");
+    });
+</script>
+</body>
+</html>

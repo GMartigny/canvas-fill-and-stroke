@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shadow overlap</title>
+</head>
+<body>
+<script>
+    // Live at https://gmartigny.github.io/canvas-fill-and-stroke/examples/shadow.html
+    const canvas = document.createElement("canvas");
+    document.body.appendChild(canvas);
+    const context = canvas.getContext("2d");
+
+    // Set shadow
+    context.shadowColor = "green";
+    context.shadowBlur = 10;
+    context.shadowOffsetX = 30;
+    context.shadowOffsetY = 5;
+
+    context.fillStyle = "blue";
+    context.strokeStyle = "red";
+    context.lineWidth = 20;
+
+    const path = new Path2D();
+    path.rect(50, 25, 100, 100);
+
+    context.fill(path);
+    context.stroke(path);
+</script>
+</body>
+</html>
