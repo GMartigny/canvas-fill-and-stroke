@@ -67,7 +67,7 @@ However, this has a few drawbacks:
  - This implementation can't read the current path and has to have a `path` given as parameter.
  - This is a hack and surely prone to bugs.
 
-For a peek at the performance drop, check out the [Benchmark page](./benchmark/).
+For a peek at the performance drop, check out the [Benchmark page](https://gmartigny.github.io/canvas-fill-and-stroke/benchmark/).
 
 
 References
